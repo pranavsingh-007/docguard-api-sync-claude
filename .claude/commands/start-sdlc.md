@@ -7,7 +7,7 @@ Accept one story reference and own the lifecycle from intake onward. Begin requi
 Required behavior:
 
 1. Review the supplied story.
-2. Resolve a local story file or, when configured tooling supports it, an external issue identifier.
+2. Resolve a local story file or an external issue identifier. For a Jira key or URL (for example `Run the complete DocGuard SDLC workflow for Jira story SCRUM-6.`), follow `.claude/rules/jira-intake.md`: read-only Atlassian MCP retrieval before branch preflight, a `sdlc/<story-slug>/story.md` snapshot written only after the feature branch exists, and a local Markdown story as the fallback if Jira is unavailable.
 3. Derive a filesystem-safe story slug and use `sdlc/<story-slug>/` automatically.
 4. Run the branch preflight in `.claude/rules/git-workflow.md` before writing any artifact or code: check Git status, `git fetch origin main`, then create or resume `feature/<story-key>-<short-description>`. Stop and report if the working tree or an existing branch cannot be used safely; never recreate or overwrite a branch.
 5. Identify unclear requirements, missing details, assumptions, and edge cases.
