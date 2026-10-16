@@ -14,9 +14,9 @@ Required behavior:
 8. Update `sdlc/<story-slug>/verification-report.md` with final evidence.
 9. If verification fails, ask which defect fixes are approved; after approved fixes, rerun verification automatically.
 10. Proceed only after PASS or explicit acceptance of a documented limitation.
-11. Create `sdlc/<story-slug>/pull-request.md`, prepare the PR title/body, and ask for final approval before PR creation.
-12. Create/open the PR after approval when supported; otherwise provide the complete title/body and required integration guidance.
-13. Never merge automatically.
+11. Re-run the final quality validation from `.claude/rules/git-workflow.md` (`mvn test`, `mvn package`, `java -jar target/docguard-0.1.0-SNAPSHOT.jar --help`), then create `sdlc/<story-slug>/pull-request.md` from the actual diff and that run's results, and prepare the PR title/body.
+12. Follow Step 7 of the SDLC Orchestrator: ask for commit approval, push approval, and final PR approval, separately and in that order. Create the PR with `gh pr create --draft --base main` after final PR approval; if `gh` is unavailable, provide the complete title/body and required integration guidance.
+13. Never merge automatically, and leave the PR in Draft.
 
 Repository rules:
 
