@@ -20,3 +20,5 @@ logs/
 # OS files
 .DS_Store
 Thumbs.db
+# CodeMie generated analytics
+docs/codemie/analytics/
