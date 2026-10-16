@@ -19,6 +19,7 @@ DocGuard is a Java 17 Maven CLI that statically analyzes Spring REST controller 
 - Do not implement before requirements, architecture, and the implementation plan are approved. Report review findings and verification defects before changes; apply only explicitly approved fixes.
 - Do not add features beyond approved scope. Document deferred items explicitly rather than silently implementing them.
 - Never merge a pull request automatically. Obtain final human approval before PR creation.
+- Git and GitHub actions follow `.claude/rules/git-workflow.md`: work only on a story feature branch (created or resumed before any artifact or code is written), and obtain separate explicit approvals for commit, push, and the final PR approval. Commit approval and push approval are Git-action approvals, not lifecycle gates; the six lifecycle gates are unchanged.
 
 ## Safety and deterministic behavior
 
@@ -32,12 +33,13 @@ DocGuard is a Java 17 Maven CLI that statically analyzes Spring REST controller 
 
 The complete lifecycle from story to pull request:
 
+0. **Branch preflight**: Check Git status, fetch `origin main`, create or resume `feature/<story-key>-<short-description>` (no approval gate)
 1. **Requirements**: Read story, ask clarification questions, create `requirements.md`, obtain approval
 2. **Architecture and Design Review**: Create `architecture.md` and `design-review.md`, obtain design approval
 3. **Implementation Planning**: Create `impl-plan.md`, obtain plan approval
 4. **Implementation**: Implement approved plan, run tests
 5. **Code Review**: Create `code-review.md`, obtain fix approval, apply approved fixes
 6. **Verification**: Run tests and validation, create `verification-report.md`, obtain defect-fix approval if needed
-7. **Pull Request**: Create `pull-request.md`, prepare PR, obtain final approval, create PR
+7. **Pull Request**: Re-run final Maven checks, create `pull-request.md`, prepare PR, obtain commit approval, push approval, and final PR approval separately, then create the Draft PR with `gh` targeting `main`
 
-Approval at each gate authorizes automatic transition to the next phase.
+Approval at each gate authorizes automatic transition to the next phase. Commit approval, push approval, and final PR approval in step 7 are separate: each authorizes only its own action.

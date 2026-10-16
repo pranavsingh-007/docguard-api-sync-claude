@@ -24,6 +24,11 @@ The story reference may be a local story file or, when configured tooling suppor
 
 ## Lifecycle
 
+0. **Branch preflight**
+   - Before writing any artifact or code, follow `.claude/rules/git-workflow.md`: check Git status, `git fetch origin main`, then create or resume `feature/<story-key>-<short-description>`.
+   - Never implement on `main`; never recreate or overwrite an existing branch or uncommitted work.
+   - This adds no approval gate; continue to requirements automatically.
+
 1. **Requirements**
    - Automatically read and analyze the story.
    - Ask only necessary clarification questions.
@@ -61,11 +66,13 @@ The story reference may be a local story file or, when configured tooling suppor
    - Continue only after PASS or explicit acceptance of a documented limitation.
 
 7. **Pull request preparation**
-   - Create `pull-request.md` with Summary, Changes Made, Test Evidence, Known Limitations, Reviewer Checklist, Agentic SDLC Evidence, and Changelog.
+   - Re-run `mvn test`, `mvn package`, and the CLI `--help` smoke check, and record the actual results.
+   - Create `pull-request.md` with Summary, Changes Made, Test Evidence, Known Limitations, Reviewer Checklist, Agentic SDLC Evidence, and Changelog, plus the Recommended PR Title, from the actual diff and test run.
    - Prepare the PR title and body.
-   - Obtain final human approval.
-   - Create/open the PR when supported; otherwise provide the complete title/body and required integration guidance.
-   - Never merge automatically.
+   - Record the first five gates in `pull-request.md` per actual evidence; record final PR approval as Pending until explicitly granted.
+   - Obtain commit approval, push approval, and final PR approval, separately and in that order.
+   - Create the PR with `gh pr create --draft --base main` after final PR approval; otherwise provide the complete title/body and required integration guidance.
+   - Never merge automatically; leave the PR in Draft.
 
 ## Automatic transition rule
 
@@ -90,7 +97,7 @@ The story workspace contains SDLC evidence only. Production source, tests, and u
 - implementation-plan approval
 - code-review finding approval, or approval to verify when there are no findings
 - verification defect-fix approval or limitation acceptance
-- final pull request approval
+- final PR approval before Draft PR creation (preceded by separate commit approval and push approval, which are Git-action approvals, not lifecycle gates)
 
 ## Quality rules
 
