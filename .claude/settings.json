@@ -1,0 +1,18 @@
+{
+  "hooks": {
+    "SessionStart": [{
+      "hooks": [{
+        "type": "command",
+        "command": "mvn -q -DskipTests compile",
+        "statusMessage": "Compiling DocGuard...",
+        "timeout": 120
+      }]
+    }]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(mvn *)",
+      "PowerShell(mvn *)"
+    ]
+  }
+}
