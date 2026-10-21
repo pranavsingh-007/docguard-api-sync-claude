@@ -4,7 +4,7 @@ Using the approved architecture and design-review decisions in the active story 
 
 Required behavior:
 
-1. Use the active story workspace supplied by the orchestrator; when used directly, derive the slug from either a local story filename or a supported external issue identifier such as a Jira key.
+1. Use the active story workspace supplied by the main agent; when used directly, derive the slug from either a local story filename or a supported external issue identifier such as a Jira key.
 2. Break the design into small implementation tasks.
 3. Include task ID, name, description, dependencies, expected output, and validation/test needed.
 4. Order tasks so blocked work appears after dependencies.

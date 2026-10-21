@@ -4,7 +4,7 @@ Review the current DocGuard implementation against the approved story requiremen
 
 Required behavior:
 
-1. Use the active story workspace supplied by the orchestrator; when used directly, derive the slug from either a local story filename or a supported external issue identifier such as a Jira key.
+1. Use the active story workspace supplied by the main agent; when used directly, derive the slug from either a local story filename or a supported external issue identifier such as a Jira key.
 2. Review correctness, security and safety, error handling, tests, code clarity, DRY, and dependency safety.
 3. Identify findings before fixing them.
 4. Record findings in `sdlc/<story-slug>/code-review.md` with severity, recommendation, and status.

@@ -1,6 +1,6 @@
 # Start SDLC Flow
 
-You are the SDLC Orchestrator for DocGuard.
+You are the main Claude Code agent coordinating the DocGuard SDLC. Load the `docguard-sdlc` skill (`.claude/skills/docguard-sdlc/SKILL.md`) and follow it as the source of truth for lifecycle phases, specialist delegation, artifact handoffs, workflow resumption, and approval gates.
 
 Accept one story reference and own the lifecycle from intake onward. Begin requirements analysis automatically.
 
@@ -10,13 +10,12 @@ Required behavior:
 2. Resolve a local story file or an external issue identifier. For a Jira key or URL (for example `Run the complete DocGuard SDLC workflow for Jira story SCRUM-6.`), follow `.claude/rules/jira-intake.md`: read-only Atlassian MCP retrieval before branch preflight, a `sdlc/<story-slug>/story.md` snapshot written only after the feature branch exists, and a local Markdown story as the fallback if Jira is unavailable.
 3. Derive a filesystem-safe story slug and use `sdlc/<story-slug>/` automatically.
 4. Run the branch preflight in `.claude/rules/git-workflow.md` before writing any artifact or code: check Git status, `git fetch origin main`, then create or resume `feature/<story-key>-<short-description>`. Stop and report if the working tree or an existing branch cannot be used safely; never recreate or overwrite a branch.
-5. Identify unclear requirements, missing details, assumptions, and edge cases.
-6. Ask only the most important clarification questions needed before finalizing requirements.
-7. When clarification is necessary, do not generate final requirements until the human answers; if the story is already sufficient, proceed directly to the requirements artifact.
-8. After the human confirms the key decisions, create `sdlc/<story-slug>/requirements.md`.
-9. Ask **Approve and continue** or **Request changes**, then wait.
-10. On approval, automatically begin architecture and design review.
-11. For an existing workspace, infer the current phase and resume at its next required gate instead of restarting.
+5. Delegate requirements analysis to the `requirements-analyst` agent. It identifies unclear requirements, missing details, assumptions, and edge cases, and returns only the most important clarification questions to you.
+6. Ask the human those questions yourself, relaying the answers back to the analyst. Do not generate final requirements until the human answers; if the story is already sufficient, proceed directly to the requirements artifact.
+7. After the human confirms the key decisions, ensure `sdlc/<story-slug>/requirements.md` is created.
+8. Ask **Approve and continue** or **Request changes**, then wait.
+9. On approval, automatically begin architecture and design review.
+10. For an existing workspace, infer the current phase and resume at its next required gate instead of restarting.
 
 Repository rules:
 

@@ -27,11 +27,11 @@ Review the code for:
 - Distinguish findings that are actionable from those that are observations or deferred for v1.
 - Do not fix issues that are not explicitly approved by the human.
 - Keep the review grounded in the approved scope and architecture.
-- Return findings without fixes to the orchestrator. The orchestrator presents the approval gate and, after the human decision, coordinates only approved fixes.
+- Return findings without fixes to the main agent. The main agent presents the approval gate and, after the human decision, coordinates only approved fixes. If information is missing, return your questions to the main agent rather than asking the human directly.
 
 ## Required review outputs
 
-- Use the active story workspace supplied by the orchestrator; when used directly, derive it automatically from the story reference.
+- Use the active story workspace supplied by the main agent; when used directly, derive it automatically from the story reference.
 - Create or update `sdlc/<story-slug>/code-review.md`.
 - It should clearly record the findings and the accepted or deferred decisions.
 - Ensure the review directly references the approved architecture and requirement intent from the active story workspace.

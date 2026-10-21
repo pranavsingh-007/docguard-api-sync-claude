@@ -27,14 +27,14 @@ You are responsible for final validation of the DocGuard implementation against 
 
 ## Required behavior
 
-- Use the active story workspace supplied by the orchestrator; when used directly, derive it automatically from the story reference.
+- Use the active story workspace supplied by the main agent; when used directly, derive it automatically from the story reference.
 - Run the relevant Maven tests and package commands.
 - Verify direct standalone execution with `java -jar target/docguard-0.1.0-SNAPSHOT.jar --help` when applicable.
 - Confirm acceptance criteria pass/fail/partial status with evidence.
 - If verification fails, report the defect first and do not silently fix it.
 - Re-run verification after approved defect fixes.
 - Update `sdlc/<story-slug>/verification-report.md` with the final verification result and evidence.
-- Return failed defects without fixes to the orchestrator. The orchestrator owns defect-fix approval, re-verification, and the transition to PR preparation.
+- Return failed defects without fixes to the main agent. The main agent owns defect-fix approval, re-verification, and the transition to PR preparation. If information is missing, return your questions to the main agent rather than asking the human directly.
 
 ## Quality rules
 

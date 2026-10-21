@@ -1,6 +1,6 @@
 # Git and pull request workflow
 
-These rules apply to every story cycle and complement the SDLC Orchestrator lifecycle and the shared rules in `CLAUDE.md`. They govern Git and GitHub actions only; phase order and artifacts stay as defined by the orchestrator.
+These rules apply to every story cycle and complement the `docguard-sdlc` skill lifecycle and the shared rules in `CLAUDE.md`. They govern Git and GitHub actions only; phase order and artifacts stay as defined by the skill.
 
 The six lifecycle approval gates are unchanged: requirements, design, implementation plan, code review, verification defects, and **final PR approval**. Commit approval and push approval are separate Git-action approvals that precede the final PR approval; they are not additional lifecycle gates.
 
@@ -44,7 +44,7 @@ Run this once per story cycle, after the story source and slug are resolved and 
 
 ## Pull request evidence
 
-- Generate `sdlc/<story-slug>/pull-request.md` with the sections the orchestrator defines: Summary, Changes Made, Test Evidence, Known Limitations, Reviewer Checklist, Agentic SDLC Evidence, Changelog. Keep the existing "Recommended PR Title" section at the end for the PR title.
+- Generate `sdlc/<story-slug>/pull-request.md` with the sections the `docguard-sdlc` skill defines: Summary, Changes Made, Test Evidence, Known Limitations, Reviewer Checklist, Agentic SDLC Evidence, Changelog. Keep the existing "Recommended PR Title" section at the end for the PR title.
 - **Changes Made** comes from the actual changes, not the plan:
   - Before the commit: `git diff --stat origin/main`, `git diff origin/main`, and `git status --short` for untracked files.
   - After the commit: `git diff --stat origin/main...HEAD`.
