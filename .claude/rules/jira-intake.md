@@ -1,6 +1,6 @@
 # Jira story intake
 
-These rules apply when a story reference is a Jira issue. They extend the story intake in `CLAUDE.md` and the orchestrator; they add no approval gate. Phase order, the six lifecycle gates, and `.claude/rules/git-workflow.md` are unchanged.
+These rules apply when a story reference is a Jira issue. They extend the story intake in `CLAUDE.md` and the `docguard-sdlc` skill; they add no approval gate. Phase order, the six lifecycle gates, and `.claude/rules/git-workflow.md` are unchanged.
 
 ## Detection
 

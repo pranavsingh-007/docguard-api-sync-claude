@@ -4,7 +4,7 @@ Review the approved `sdlc/<story-slug>/requirements.md` and create a recommended
 
 Required behavior:
 
-1. Use the active story workspace supplied by the orchestrator; when used directly, derive the slug from either a local story filename or a supported external issue identifier such as a Jira key.
+1. Use the active story workspace supplied by the main agent; when used directly, derive the slug from either a local story filename or a supported external issue identifier such as a Jira key.
 2. Recommend the main components and responsibilities.
 3. Explain the chosen technology and library stack.
 4. Describe the end-to-end data flow.
